@@ -18,3 +18,12 @@ hexo.extend.helper.register('next_env', type => {
   const env = require(path.normalize('../../package.json'));
   return env[type];
 });
+
+hexo.extend.helper.register('canonical', function() {
+  const permalink = hexo.config.permalink;
+  const canonical = hexo.theme.config.canonical;
+  if (permalink.endsWith('.html')) {
+    return canonical ? `<link rel="canonical" href="${this.url.replace('index.html', '')}">` : '';
+  }
+  return canonical ? `<link rel="canonical" href="${this.url.replace('index.html', '').replace('.html', '')}">` : '';
+});
