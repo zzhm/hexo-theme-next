@@ -1,15 +1,15 @@
 /* global hexo */
 
-"use strict";
+'use strict';
 
-const nunjucks = require("nunjucks");
-const path = require("path");
+const nunjucks = require('nunjucks');
+const path = require('path');
 
 function njkCompile(data) {
-  const templateDir = path.dirname(data["path"]);
-  const config = Object.assign({ "autoescape": false }, hexo.config.nunjucks);
+  const templateDir = path.dirname(data['path']);
+  const config = Object.assign({ 'autoescape': false }, hexo.config.nunjucks);
   const env = nunjucks.configure(templateDir, config);
-  return nunjucks.compile(data["text"], env, data["path"]);
+  return nunjucks.compile(data['text'], env, data['path']);
 }
 
 function njkRenderer(data, locals, callback) {
@@ -24,6 +24,4 @@ njkRenderer.compile = function(data) {
   }
 }
 
-hexo.extend.renderer.register("njk", "html", njkRenderer);
-hexo.extend.renderer.register("nunjucks", "html", njkRenderer);
-hexo.extend.renderer.register("j2", "html", njkRenderer);
+hexo.extend.renderer.register('njk', 'html', njkRenderer);
