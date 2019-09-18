@@ -19,7 +19,7 @@ hexo.extend.helper.register('canonical', function() {
     return '';
   }
   var url = this.url.replace('index.html', '');
-  if (permalink.endsWith('.html')) {
+  if (!permalink.endsWith('.html')) {
     url = url.replace('.html', '');
   }
   return `<link rel="canonical" href="${url}">`;
