@@ -17,13 +17,12 @@ hexo.extend.helper.register('canonical', function() {
   const canonical = hexo.theme.config.canonical;
   if (!canonical) {
     return '';
-  } else {
-    var url = this.url.replace('index.html', '');
-    if (permalink.endsWith('.html')) {
-      url = url.replace('.html', '');
-    }
-    return `<link rel="canonical" href="${url}">`;
   }
+  var url = this.url.replace('index.html', '');
+  if (permalink.endsWith('.html')) {
+    url = url.replace('.html', '');
+  }
+  return `<link rel="canonical" href="${url}">`;
 });
 
 hexo.extend.helper.register('gitalk_md5', function(path) {
